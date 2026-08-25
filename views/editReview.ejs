@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>Edit Your Review</title>
+</head>
+<body>
+    <h1>Current Book Reviews</h1>
+    <% if (locals.review) { %>
+    <% review.forEach(result => { %>
+    <li>
+    <%# Form to edit a review %>
+        <form class="edit" action="/edit" method="post">
+        <img class="bookCover" src="<%- result.url %>">
+        <p>Title: <%= result.title %></p>
+        <p>Author: <%= result.author %></p>
+        <p>My Rating:</p>
+        <input type="number" name="Rating" min="1" max="5" value="<%= result.rating %>">
+        </br>
+        <p>My Review:</p>
+        <input type="text" id="editText" name="updatedReview" value="<%= result.review %>" autocomplete="off"
+        autofocus="true"/>
+        <input type="text" id="id" name="id" value="<%= result.id %> " hidden="true" />
+        </br>
+        </br>
+        <button id="done" type="submit" class="updateButton">Update Review</button>
+        </form>
+        <%# Button to delete a review %>
+        <form action="/delete" method="post">
+        <input type="text" id="id" name="id" value="<%= result.id %> " hidden="true" />
+        <button id="delete" type="submit" class="deleteButton">Delete Review</button>
+        </form>
+    </li>
+    <% })} %>
+</body>
+</html>

@@ -1,0 +1,56 @@
+/* Using Flexbox for good element positioning */
+
+body {
+    background-color: #F4EFE6;
+    color: #2F2924
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.formElement {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    align-items: center;
+}
+
+#editText {
+    width: 20rem;
+    height: 2rem;
+}
+
+li {
+    list-style: none;
+}
+
+.editButton {
+    margin-bottom: 5rem;
+    background-color: blue;
+    color: white;
+}
+
+.addButton {
+    background-color: blue;
+    color: white;
+}
+
+.updateButton {
+    background-color: green;
+    margin-bottom: 1rem;
+}
+
+.deleteButton {
+    background-color: red;
+}
+/* #newReview input{
+    background-color: gray;
+}
+textarea {
+    background-color: gray;
+}
+#submitReview{
+    color: green;
+}
+*/

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>My Book Reviews</title>
+</head>
+<body>
+    <h1>Books I've Read</h1>
+    <%# Allows sorting by rating or date %>
+    <h2>Click to sort by <a href="/rating">rating</a> or <a href="/recency">recency</a></h2>
+    <% if (locals.review) { %>
+    <% review.forEach(result => { %>
+    <%# Display review information as list items %>
+    <li class="bookReview">
+        <form class="edit" action="/editReview" method="post">
+        <img class="bookCover" src="<%- result.url %>">
+        <p> ISBN: <%= result.isbn %> </p>
+        <p>Title: <%= result.title %></p>
+        <p>Author: <%= result.author %></p>
+        <p>Date Reviewed: <%= result.date.toISOString().slice(0,10) %></p>
+        <p>My Rating: <%= result.rating %></p>
+        <p>My Review: <%= result.review %></p>
+        <input type="text" id="id" name="id" value="<%= result.id %> " hidden="true" />
+        <button class="editButton" type="submit" style="width: 15%;">Edit Review</button>
+        </form>
+    </li>
+    <% })} %>
+    <form action="/add" method="post">
+    <button class="addButton">Add new review</button>
+    </form>
+</body>
+</html>
